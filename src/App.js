@@ -10,6 +10,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    try {
+      let colors = new Values(color).all(10);
+      console.log(colors);
+      setList(colors);
+    } catch (err) {
+      setError(true);
+      console.log(err);
+    }
   };
   return (
     <>
@@ -21,6 +29,7 @@ function App() {
             value={color}
             onChange={(e) => setColor(e.target.value)}
             placeholder='#f15025'
+            className={`${error ? 'error' : ''}`}
           />
           <button className='btn' type='submit'>
             submit
