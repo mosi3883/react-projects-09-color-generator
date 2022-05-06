@@ -4,7 +4,7 @@ import SingleColor from './SingleColor';
 import Values from 'values.js';
 
 function App() {
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState('#f15025');
   const [error, setError] = useState('');
   const [list, setList] = useState([]);
 
@@ -37,7 +37,9 @@ function App() {
         </form>
       </section>
       <section className='colors'>
-        <h4>list goes here</h4>
+        {list.map((color, index) => {
+          return <SingleColor key={index} hex={color.hex} {...color} index={index} />;
+        })}
       </section>
     </>
   );
